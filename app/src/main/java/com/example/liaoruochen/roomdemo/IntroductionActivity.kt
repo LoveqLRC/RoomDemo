@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.example.liaoruochen.roomdemo.db.RepoDatabase
 import com.example.liaoruochen.roomdemo.entity.Repo
 import com.example.liaoruochen.roomdemo.entity.User
+import com.example.liaoruochen.roomdemo.entity.UserRepoJoin
 import com.example.liaoruochen.roomdemo.utilities.runOnIoThread
 
 class IntroductionActivity : AppCompatActivity() {
@@ -121,17 +122,39 @@ class IntroductionActivity : AppCompatActivity() {
             RepoDatabase
                     .getInstance(this)
                     .getUserDao()
-                    .insert(User(1,"rc","loevqrc"))
+                    .insert(User(1, "rc", "loevqrc"))
         }
     }
 
     fun getRepoForUserId(view: View) {
+//        runOnIoThread {
+//            var reposForUser = RepoDatabase
+//                    .getInstance(this)
+//                    .getRepoDao()
+//                    .findReposForUser(1)
+//            reposForUser.forEach { Log.d("tag", it.toString()) }
+//        }
+    }
+
+
+    fun manyToMany(view: View) {
         runOnIoThread {
-            var reposForUser = RepoDatabase
-                    .getInstance(this)
+            val userDao = RepoDatabase.getInstance(this)
+                    .getUserDao()
+            val repoDao = RepoDatabase.getInstance(this)
                     .getRepoDao()
-                    .findReposForUser(1)
-            reposForUser.forEach { Log.d("tag", it.toString()) }
+            val userRepoJoinDao = RepoDatabase.getInstance(this)
+                    .getUserRepoJoinDao()
+
+            userDao.insert(User(1,"login","loveqRc"))
+            repoDao.insert(Repo(1,"name","url"))
+
+            userRepoJoinDao.insert(UserRepoJoin(1,1))
+
+            val users = userRepoJoinDao.getReposForUsers(1)
+            Log.d("aaa",users.toString())
+            var repos = userRepoJoinDao.getUsersForRepos(1)
+            Log.d("aaa",repos.toString())
         }
     }
 

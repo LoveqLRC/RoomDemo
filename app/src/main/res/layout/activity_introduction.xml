@@ -81,5 +81,18 @@
             android:layout_height="wrap_content"
             android:text="通过用户Id查找仓库"
             android:onClick="getRepoForUserId"/>
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="一对多"
+            android:onClick="getRepoForUserId"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="对对多"
+            android:onClick="manyToMany"/>
     </LinearLayout>
 </ScrollView>

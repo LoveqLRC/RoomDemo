@@ -69,5 +69,17 @@
             android:layout_height="wrap_content"
             android:text="删除一个仓库"
             android:onClick="delete"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="添加一个用户"
+            android:onClick="addUser"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="通过用户Id查找仓库"
+            android:onClick="getRepoForUserId"/>
     </LinearLayout>
 </ScrollView>

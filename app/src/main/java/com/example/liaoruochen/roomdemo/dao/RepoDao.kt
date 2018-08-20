@@ -20,6 +20,9 @@ interface RepoDao {
     fun getReposByName(max: Int, vararg name: String): List<Repo>
 
 
+    @Query("SELECT * FROM repo WHERE userId=:userId")
+    fun findReposForUser(userId: Int): List<Repo>
+
     @Insert
     fun insert(vararg repos: Repo)
 

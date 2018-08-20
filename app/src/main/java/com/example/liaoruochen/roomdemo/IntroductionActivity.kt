@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.liaoruochen.roomdemo.db.RepoDatabase
 import com.example.liaoruochen.roomdemo.entity.Repo
+import com.example.liaoruochen.roomdemo.entity.User
 import com.example.liaoruochen.roomdemo.utilities.runOnIoThread
 
 class IntroductionActivity : AppCompatActivity() {
@@ -101,17 +102,36 @@ class IntroductionActivity : AppCompatActivity() {
         runOnIoThread {
             RepoDatabase.getInstance(this)
                     .getRepoDao()
-                    .update(Repo(1,"今天也有开开心心","2018年08月17日15:51:40"))
+                    .update(Repo(1, "今天也有开开心心", "2018年08月17日15:51:40"))
         }
 
     }
 
-    fun delete(view :View){
+    fun delete(view: View) {
         runOnIoThread {
             RepoDatabase
                     .getInstance(this)
                     .getRepoDao()
-                    .delete(Repo(1,"哎呀呀","2018年08月17日15:55:19"))
+                    .delete(Repo(1, "哎呀呀", "2018年08月17日15:55:19"))
+        }
+    }
+
+    fun addUser(view: View) {
+        runOnIoThread {
+            RepoDatabase
+                    .getInstance(this)
+                    .getUserDao()
+                    .insert(User(1,"rc","loevqrc"))
+        }
+    }
+
+    fun getRepoForUserId(view: View) {
+        runOnIoThread {
+            var reposForUser = RepoDatabase
+                    .getInstance(this)
+                    .getRepoDao()
+                    .findReposForUser(1)
+            reposForUser.forEach { Log.d("tag", it.toString()) }
         }
     }
 

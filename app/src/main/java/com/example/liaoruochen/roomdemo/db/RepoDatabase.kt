@@ -8,18 +8,22 @@ import android.content.Context
 import com.example.liaoruochen.roomdemo.dao.RepoDao
 import com.example.liaoruochen.roomdemo.dao.UserDao
 import com.example.liaoruochen.roomdemo.dao.UserRepoJoinDao
+import com.example.liaoruochen.roomdemo.dao.UserWithReposDao
 import com.example.liaoruochen.roomdemo.entity.Repo
 import com.example.liaoruochen.roomdemo.entity.User
 import com.example.liaoruochen.roomdemo.entity.UserRepoJoin
 import com.example.liaoruochen.roomdemo.utilities.DATABASE_NAME
 
 
-@Database(entities = [Repo::class, User::class, UserRepoJoin::class], version = 1)
+@Database(entities = [
+    Repo::class,
+    User::class
+    ], version = 1)
 abstract class RepoDatabase : RoomDatabase() {
 
     abstract fun getRepoDao(): RepoDao
     abstract fun getUserDao(): UserDao
-    abstract fun getUserRepoJoinDao(): UserRepoJoinDao
+    abstract fun getUserWithRepoDao(): UserWithReposDao
 
 
     companion object {

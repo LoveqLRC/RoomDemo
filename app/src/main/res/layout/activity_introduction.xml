@@ -92,7 +92,13 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="对对多"
+            android:text="多对多"
             android:onClick="manyToMany"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="relation"
+            android:onClick="relation"/>
     </LinearLayout>
 </ScrollView>

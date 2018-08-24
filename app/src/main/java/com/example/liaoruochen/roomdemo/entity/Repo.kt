@@ -8,8 +8,9 @@ import android.arch.persistence.room.PrimaryKey
 @Entity
 data class Repo(
         @PrimaryKey
-        val id :Int ,
-        val name :String ,
-        val url :String
+        val id: Int,
+        val name: String,
+        val url: String,
+        val userId: Int
 )
 
